@@ -58,11 +58,6 @@ jobs:
         run: cargo install tauri-cli --locked --version "^2" --force
 
       - name: Build macOS bundle
-        env:
-          APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY != '' && secrets.APPLE_SIGNING_IDENTITY || '-' }}
-          APPLE_API_ISSUER: ${{ secrets.APPLE_API_ISSUER }}
-          APPLE_API_KEY: ${{ secrets.APPLE_API_KEY }}
-          APPLE_API_KEY_PATH: ${{ secrets.APPLE_API_KEY_PATH }}
         run: bash ./scripts/build-release.sh
 
       - name: Upload macOS artifacts
