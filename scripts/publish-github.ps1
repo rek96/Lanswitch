@@ -40,18 +40,27 @@ if (-not $setup) { throw "NSIS installer not found. Run build-release.ps1 first.
 
 # Ensure remote exists and code is pushed
 $remoteUrl = "https://github.com/$Repo.git"
-git remote get-url origin 2>$null | Out-Null
-if ($LASTEXITCODE -ne 0) {
+$hasOrigin = $false
+try {
+  git remote get-url origin 2>$null | Out-Null
+  if ($LASTEXITCODE -eq 0) { $hasOrigin = $true }
+} catch {}
+
+if (-not $hasOrigin) {
   git remote add origin $remoteUrl
 }
 
 git branch -M main
+$pushOk = $false
 git push -u origin main 2>$null
-if ($LASTEXITCODE -ne 0) {
-  & $gh repo create $Repo --public --source=. --remote=origin --push --description "Quick LAN preset switching from the system tray — by EK Consult"
-}
+if ($LASTEXITCODE -eq 0) { $pushOk = $true }
 
-git push origin main
+if (-not $pushOk) {
+  & $gh repo create $Repo --public --source=. --remote=origin --push --description "Quick LAN preset switching from the system tray — by EK Consult"
+  if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+} else {
+  git push origin main
+}
 
 # Create or update release
 $releaseExists = & $gh release view $Tag 2>$null
