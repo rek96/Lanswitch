@@ -28,6 +28,15 @@ Closing the settings window **hides** the app to the tray. Use **Quit LANSwitch*
 > Windows may show a SmartScreen warning until the installer is signed with a
 > code-signing certificate. See [docs/DISTRIBUTION.md](docs/DISTRIBUTION.md).
 
+### macOS (Apple Silicon)
+
+1. Download **`LANSwitch_*_aarch64.dmg`** from [Releases](https://github.com/rek96/Lanswitch/releases/latest).
+2. Open the DMG and drag **LANSwitch** to Applications.
+3. If Gatekeeper blocks launch, allow it under **System Settings → Privacy & Security**.
+4. Set up the privileged helper once — see [docs/PRIVILEGED-HELPER.md](docs/PRIVILEGED-HELPER.md).
+
+> macOS build is ad-hoc signed until Apple Developer notarization is configured.
+
 ---
 
 ## Features
