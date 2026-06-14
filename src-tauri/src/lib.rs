@@ -16,9 +16,11 @@ use std::sync::Mutex;
 
 use tauri::{
     menu::{Menu, MenuItem, Submenu},
-    tray::{MouseButton, MouseButtonState, TrayIconBuilder, TrayIconEvent},
+    tray::TrayIconBuilder,
     App, AppHandle, Emitter, Manager, State, WindowEvent,
 };
+#[cfg(target_os = "windows")]
+use tauri::tray::{MouseButton, MouseButtonState, TrayIconEvent};
 use tauri_plugin_opener::OpenerExt;
 
 const BUY_ME_A_COFFEE_URL: &str = "https://buymeacoffee.com/ekconsult";

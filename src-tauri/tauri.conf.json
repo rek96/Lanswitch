@@ -55,6 +55,7 @@
     },
     "macOS": {
       "minimumSystemVersion": "13.0",
+      "signingIdentity": "-",
       "files": {
         "Library/LaunchDaemons/com.lanswitch.helper.plist": "../packaging/macos/com.lanswitch.helper.plist"
       }
