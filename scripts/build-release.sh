@@ -5,6 +5,11 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
+# Ad-hoc sign when no Apple Developer identity is configured (unsigned CI builds).
+if [[ -z "${APPLE_SIGNING_IDENTITY:-}" ]]; then
+  export APPLE_SIGNING_IDENTITY="-"
+fi
+
 if [[ "${SKIP_HELPER:-}" != "1" ]]; then
   bash "$ROOT/scripts/prepare-binaries.sh" release
 fi
