@@ -15,7 +15,7 @@ port), pick a preset (Coda Audio, dLive, Lighting /8, Art-Net, DHCP…), done.
 |----------|----------|-------|
 | **Windows 10/11** | [`LANSwitch_*-setup.exe`](https://github.com/rek96/Lanswitch/releases/latest) | Recommended — installs app + privileged helper service |
 | Windows (MSI) | `LANSwitch_*_x64_en-US.msi` | Same install, enterprise-friendly |
-| macOS 13+ | `.dmg` (when published) | Requires helper approval — see [docs/PRIVILEGED-HELPER.md](docs/PRIVILEGED-HELPER.md) |
+| macOS 13+ | [`.dmg` on Releases](https://github.com/rek96/Lanswitch/releases/latest) | Apple Silicon (arm64); helper requires approval — see [docs/PRIVILEGED-HELPER.md](docs/PRIVILEGED-HELPER.md) |
 
 ### Windows (3 steps)
 
