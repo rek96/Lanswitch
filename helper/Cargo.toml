@@ -1,0 +1,17 @@
+[package]
+name = "lanswitch-helper"
+version = "0.1.0"
+edition = "2021"
+description = "Privileged background helper that applies network changes for LANSwitch."
+
+[[bin]]
+name = "lanswitch-helper"
+path = "src/main.rs"
+
+[dependencies]
+lanswitch-core = { path = "../core" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+# Cross-platform local IPC: Unix domain socket on macOS, named pipe on Windows.
+# Pin to whatever 2.x is current when you build; the API below targets v2.
+interprocess = "2"

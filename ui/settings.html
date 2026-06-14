@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LANSwitch — Settings</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">⇄</span> LANSwitch
+      <span class="brand-sub">by EK Consult</span>
+    </div>
+    <div class="actions">
+      <button id="hide" class="ghost" title="Hide this window — LANSwitch keeps running in the tray">Hide to tray</button>
+      <button id="export" class="ghost" title="Copy presets as JSON">Export</button>
+      <button id="import" class="ghost" title="Paste presets JSON">Import</button>
+      <button id="save" class="primary">Save</button>
+    </div>
+  </header>
+
+  <main>
+    <p class="tray-hint">Closing this window hides it to the system tray. Use <strong>Quit LANSwitch</strong> in the tray menu to exit.</p>
+    <div id="change-banner" class="change-banner hidden"></div>
+
+    <section class="panel" id="custom-panel">
+      <div class="panel-head">
+        <h2>Quick custom apply</h2>
+      </div>
+      <p class="hint">Type a one-off address for an interface and apply it now —
+        no need to save a preset. You can also save it as one.</p>
+
+      <div class="custom-grid">
+        <label>Interface</label>
+        <select id="customIface"></select>
+
+        <label>IP address</label>
+        <input id="customIp" type="text" placeholder="192.168.0.245" />
+
+        <label>Subnet</label>
+        <div class="row">
+          <select id="customSubnet">
+            <option value="24">/24 — 255.255.255.0 (most common)</option>
+            <option value="16">/16 — 255.255.0.0</option>
+            <option value="8">/8 — 255.0.0.0</option>
+            <option value="custom">Custom…</option>
+          </select>
+          <input id="customSubnetText" type="text" placeholder="e.g. 255.255.255.0 or 23" class="hidden" />
+        </div>
+
+        <label>Gateway <span class="opt">(optional)</span></label>
+        <input id="customGw" type="text" placeholder="leave blank for isolated LANs" />
+
+        <label>DNS</label>
+        <div class="dns-block">
+          <select id="customDns">
+            <option value="">Leave unchanged</option>
+            <option value="clear">Clear (set automatic)</option>
+            <option value="cloudflare">Cloudflare — 1.1.1.1 / 1.0.0.1</option>
+            <option value="google">Google — 8.8.8.8 / 8.8.4.4</option>
+            <option value="quad9">Quad9 — 9.9.9.9 / 149.112.112.112</option>
+            <option value="custom">Custom…</option>
+          </select>
+          <div id="customDnsInputs" class="row hidden">
+            <input id="customDns1" type="text" placeholder="Primary DNS" />
+            <input id="customDns2" type="text" placeholder="Secondary DNS (optional)" />
+          </div>
+        </div>
+      </div>
+
+      <div id="customPreview" class="preview muted">Enter an IP and subnet to preview…</div>
+
+      <div class="custom-actions">
+        <button id="customSave" class="ghost">Save as preset</button>
+        <button id="customApply" class="primary">Apply now</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Presets</h2>
+        <button id="add" class="small">+ Add preset</button>
+      </div>
+      <p class="hint">These appear under every network interface in the tray menu.
+        The host number (last part of the address) is the one you may want to change.</p>
+      <div id="presets" class="preset-list"><!-- rows injected --></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Interfaces &amp; quick test</h2>
+        <button id="rescan" class="small">Rescan</button>
+      </div>
+      <p class="hint">Friendly names exactly as the system sees them. Use the dropdown
+        to apply a preset right now (handy for testing).</p>
+      <div id="interfaces" class="iface-list"><!-- rows injected --></div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <span>LANSwitch by <strong>EK Consult</strong></span>
+    <a id="support-link" href="https://buymeacoffee.com/ekconsult" title="Support the developer">☕ Buy me a coffee</a>
+  </footer>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- Import/Export modal -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-card">
+      <h3 id="modal-title">JSON</h3>
+      <textarea id="modal-text" spellcheck="false"></textarea>
+      <div class="modal-actions">
+        <button id="modal-cancel" class="ghost">Close</button>
+        <button id="modal-apply" class="primary">Apply JSON</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="settings.js"></script>
+</body>
+</html>

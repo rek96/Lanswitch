@@ -1,0 +1,63 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "LANSwitch",
+  "version": "0.1.0",
+  "identifier": "com.lanswitch.app",
+  "build": {
+    "frontendDist": "../ui"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "label": "settings",
+        "title": "LANSwitch — Settings",
+        "url": "settings.html",
+        "width": 720,
+        "height": 620,
+        "resizable": true,
+        "visible": false,
+        "center": true
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis", "msi", "dmg"],
+    "publisher": "EK Consult",
+    "copyright": "Copyright © 2026 EK Consult",
+    "category": "Utility",
+    "shortDescription": "Quick LAN preset switching for AV networks",
+    "longDescription": "LANSwitch lets production crews switch network interfaces between named LAN presets from the system tray. By EK Consult.",
+    "externalBin": ["binaries/lanswitch-helper"],
+    "resources": [
+      "../packaging/windows/install-helper-service.ps1",
+      "../packaging/windows/uninstall-helper-service.ps1"
+    ],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "windows": {
+      "nsis": {
+        "installMode": "perMachine",
+        "displayLanguageSelector": false,
+        "installerHooks": "../packaging/windows/nsis-hooks.nsh"
+      },
+      "digestAlgorithm": "sha256",
+      "timestampUrl": "http://timestamp.digicert.com"
+    },
+    "macOS": {
+      "minimumSystemVersion": "13.0",
+      "files": {
+        "Library/LaunchDaemons/com.lanswitch.helper.plist": "../packaging/macos/com.lanswitch.helper.plist"
+      }
+    }
+  }
+}

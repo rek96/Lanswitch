@@ -1,0 +1,31 @@
+[package]
+name = "lanswitch"
+version = "0.1.0"
+edition = "2021"
+description = "LANSwitch — quick LAN preset switching for AV networks."
+
+[lib]
+name = "lanswitch_lib"
+crate-type = ["lib", "cdylib", "staticlib"]
+
+[[bin]]
+name = "lanswitch"
+path = "src/main.rs"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+lanswitch-core = { path = "../core" }
+tauri = { version = "2", features = ["tray-icon"] }
+tauri-plugin-autostart = "2"
+tauri-plugin-opener = "2"
+tauri-plugin-notification = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+interprocess = "2"
+
+# NOTE: pin all "2" versions to the exact current releases when you run
+# `cargo build`. They were left loose here because this scaffold was generated
+# offline. Run `cargo update` and check the Tauri 2 changelog if the tray or
+# plugin APIs differ from the calls in src/main.rs.

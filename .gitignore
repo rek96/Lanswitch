@@ -1,0 +1,24 @@
+# Rust / Cargo
+/target
+**/target
+Cargo.lock        # keep for binaries if you prefer; ignored here for the scaffold
+
+# Tauri generated
+src-tauri/gen
+src-tauri/target
+
+# Bundled helper sidecars (built locally before release)
+src-tauri/binaries/*
+!src-tauri/binaries/README.md
+
+# Node (if you later add a bundled frontend toolchain)
+node_modules
+dist
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.log
+
+# Local helper logs
+/var/log/lanswitch-helper.log

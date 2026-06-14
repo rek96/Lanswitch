@@ -1,0 +1,14 @@
+[workspace]
+resolver = "2"
+members = ["core", "helper", "src-tauri"]
+
+[workspace.package]
+edition = "2021"
+license = "MIT"
+
+# brotli 8.0.3 declares alloc-no-stdlib = "2.0" but its own sub-dep
+# brotli-decompressor 5.x requires alloc-no-stdlib 3.x, causing a
+# trait-version compile error. Patch to use alloc-no-stdlib 3.0 throughout.
+[patch.crates-io]
+brotli = { path = "vendor/brotli-8.0.3" }
+

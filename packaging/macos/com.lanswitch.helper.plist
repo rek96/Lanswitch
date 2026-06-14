@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <!-- Must match the label you register with SMAppService and the helper's
+       bundle id. -->
+  <key>Label</key>
+  <string>com.lanswitch.helper</string>
+
+  <!-- Path is relative to the daemon bundle installed in the app's
+       Contents/Library/LaunchDaemons. SMAppService resolves it. -->
+  <key>BundleProgram</key>
+  <string>Contents/MacOS/lanswitch-helper</string>
+
+  <!-- Start at load and keep alive so the socket is always ready. -->
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+
+  <!-- The app connects to the helper over a namespaced local socket created by
+       the `interprocess` crate; no MachServices entry is required for that
+       transport. If you switch to XPC, add a MachServices dict here instead. -->
+
+  <key>StandardErrorPath</key>
+  <string>/var/log/lanswitch-helper.log</string>
+</dict>
+</plist>

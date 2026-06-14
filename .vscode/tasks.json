@@ -1,0 +1,46 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "tauri:dev",
+      "detail": "Build and run the tray app with hot-reload (needs tauri-cli).",
+      "type": "shell",
+      "command": "cargo tauri dev",
+      "problemMatcher": ["$rustc"],
+      "group": { "kind": "build", "isDefault": true },
+      "presentation": { "panel": "dedicated", "clear": true }
+    },
+    {
+      "label": "tauri:build",
+      "detail": "Produce a release bundle/installer for the current OS.",
+      "type": "shell",
+      "command": "cargo tauri build",
+      "problemMatcher": ["$rustc"],
+      "presentation": { "panel": "dedicated", "clear": true }
+    },
+    {
+      "label": "helper:build",
+      "detail": "Build the privileged helper binary (run elevated to test apply).",
+      "type": "shell",
+      "command": "cargo build -p lanswitch-helper",
+      "problemMatcher": ["$rustc"],
+      "presentation": { "panel": "dedicated" }
+    },
+    {
+      "label": "test:core",
+      "detail": "Run the core validation/mask unit tests.",
+      "type": "shell",
+      "command": "cargo test -p lanswitch-core",
+      "problemMatcher": ["$rustc"],
+      "presentation": { "panel": "dedicated" }
+    },
+    {
+      "label": "install:tauri-cli",
+      "detail": "One-time: install the Tauri 2 CLI used by the dev/build tasks.",
+      "type": "shell",
+      "command": "cargo install tauri-cli --version \"^2\" --locked",
+      "problemMatcher": [],
+      "presentation": { "panel": "dedicated" }
+    }
+  ]
+}

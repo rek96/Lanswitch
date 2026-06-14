@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "presets": [
+    { "id": "coda",        "name": "Coda Audio",      "color": "#3B82F6", "mode": "static", "ip": "192.168.0.245",  "prefix": 24 },
+    { "id": "dlive",       "name": "dLive",           "color": "#8B5CF6", "mode": "static", "ip": "192.168.1.245",  "prefix": 24 },
+    { "id": "video",       "name": "Video",           "color": "#10B981", "mode": "static", "ip": "192.168.10.245", "prefix": 24 },
+    { "id": "lighting-24", "name": "Lighting (/24)",  "color": "#F59E0B", "mode": "static", "ip": "10.0.0.245",     "prefix": 24 },
+    { "id": "lighting-8",  "name": "Lighting (/8)",   "color": "#F59E0B", "mode": "static", "ip": "10.0.0.245",     "prefix": 8  },
+    { "id": "artnet-24",   "name": "Art-Net (/24)",   "color": "#EF4444", "mode": "static", "ip": "2.0.0.245",      "prefix": 24 },
+    { "id": "artnet-8",    "name": "Art-Net (/8)",    "color": "#EF4444", "mode": "static", "ip": "2.0.0.245",      "prefix": 8  },
+    { "id": "dhcp",        "name": "Automatic (DHCP)", "color": "#6B7280", "mode": "dhcp" }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug app (lanswitch)",
+      "comment": [
+        "Builds via cargo and launches the tray binary under the debugger.",
+        "Requires the CodeLLDB extension (vadimcn.vscode-lldb).",
+        "Note: for normal running, prefer the 'tauri:dev' task (Ctrl+Shift+B) —",
+        "it sets up the dev environment that the bare binary does not. Use this",
+        "config when you want breakpoints in the Rust code. Run the app once via",
+        "tauri:dev first so the webview assets are in place."
+      ],
+      "cargo": {
+        "args": ["build", "--bin=lanswitch", "--package=lanswitch"],
+        "filter": { "name": "lanswitch", "kind": "bin" }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug helper (lanswitch-helper)",
+      "comment": [
+        "The helper needs elevation to actually change IPs, but you can debug its",
+        "socket/validation logic without elevation. To exercise privileged apply,",
+        "launch it from an elevated terminal instead and attach."
+      ],
+      "cargo": {
+        "args": ["build", "--bin=lanswitch-helper", "--package=lanswitch-helper"],
+        "filter": { "name": "lanswitch-helper", "kind": "bin" }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}
