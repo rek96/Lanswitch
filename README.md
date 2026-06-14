@@ -1,10 +1,36 @@
 # LANSwitch
 
-A tiny system-tray tool for switching a network interface between named LAN
-presets — built for AV/production crews who aren't networking specialists.
+**Quick LAN preset switching from the system tray — for AV/production crews.**
+
+Created by **[EK Consult](https://buymeacoffee.com/ekconsult)**.
 
 Pick an interface by its **friendly name** (Wi-Fi, USB Ethernet dongle, built-in
 port), pick a preset (Coda Audio, dLive, Lighting /8, Art-Net, DHCP…), done.
+
+## Download & install
+
+**Latest release:** [github.com/rek96/Lanswitch/releases/latest](https://github.com/rek96/Lanswitch/releases/latest)
+
+| Platform | Download | Notes |
+|----------|----------|-------|
+| **Windows 10/11** | [`LANSwitch_*-setup.exe`](https://github.com/rek96/Lanswitch/releases/latest) | Recommended — installs app + privileged helper service |
+| Windows (MSI) | `LANSwitch_*_x64_en-US.msi` | Same install, enterprise-friendly |
+| macOS 13+ | `.dmg` (when published) | Requires helper approval — see [docs/PRIVILEGED-HELPER.md](docs/PRIVILEGED-HELPER.md) |
+
+### Windows (3 steps)
+
+1. Download **`LANSwitch_*-setup.exe`** from [Releases](https://github.com/rek96/Lanswitch/releases/latest).
+2. Run the installer (one UAC prompt — registers the background helper service).
+3. Find **LANSwitch** in the system tray → right-click an interface → pick a preset.
+
+Closing the settings window **hides** the app to the tray. Use **Quit LANSwitch** in the tray menu to exit.
+
+> Windows may show a SmartScreen warning until the installer is signed with a
+> code-signing certificate. See [docs/DISTRIBUTION.md](docs/DISTRIBUTION.md).
+
+---
+
+## Features
 
 - **Framework:** Tauri 2 (Rust + a small HTML/JS settings window)
 - **Platforms:** macOS 13+ and Windows 10/11
@@ -21,12 +47,6 @@ port), pick a preset (Coda Audio, dLive, Lighting /8, Art-Net, DHCP…), done.
   input before you apply (e.g. `192.168.0.245/24 · mask 255.255.255.0`). Subnet
   accepts a prefix (`24`, `/24`) or a dotted mask (`255.255.255.0`). Optionally
   save it as a preset.
-
-> ⚠️ This scaffold was generated offline, so it has **not been compiled**. The
-> network logic, validation, helper protocol, presets, and UI are complete and
-> version-independent. The Tauri shell (tray/menu/plugin calls in
-> `src-tauri/src/lib.rs` and the `2`-pinned crate versions) should be
-> reconciled against your installed Tauri 2.x before first build.
 
 ## Layout
 
